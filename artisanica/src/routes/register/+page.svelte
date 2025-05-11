@@ -5,7 +5,7 @@
         <input type="text" placeholder="Username" class="p-2 w-full mb-4 border border-gray-300 rounded bg-[#E5E7EB]" />
         <input type="text" placeholder="Password" class="p-2 w-full mb-4 border border-gray-300 rounded bg-[#E5E7EB]" />
 
-        <a href="/" class="text-[#3B82F6] hover:underline">Already have an account? login </a>
+        <a href="/login" class="text-[#3B82F6] hover:underline">Already have an account? login </a>
 
         <button class="px-4 py-2 bg-[#1F2937] text-[#fff] rounded">Register</button>
     </form>
