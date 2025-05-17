@@ -1,7 +1,7 @@
 import { FastifyPluginAsync } from 'fastify'
 
 const healthRoute: FastifyPluginAsync = async (fastify) => {
-  fastify.get('/', async () => {
+  fastify.get('/health', async () => {
     return { status: 'ok' }
   })
 }
