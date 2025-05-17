@@ -1,5 +1,6 @@
 import { AuthRepository } from '../../storage/repositories/auth'
 import { User } from '@prisma/client'
+import bcrypt from 'bcrypt'
 
   // Define the input type for the login and register methods
 export interface AuthInput {
@@ -28,12 +29,19 @@ export interface AuthInput {
       }
     }
 
-    async register(input: AuthInput): Promise<{ status: string; email: string }> {
-      const { email, password } = input
-
-      return {
-        status: 'ok',
-        email,
+    async register(input: AuthInput): Promise<{ status: string; user: User }> {
+    try {
+        const { password } = input
+        const hashed = await bcrypt.hash(password, 10)
+        const registeredUser = await this.authRepository.register({ ...input, password: hashed })
+  
+        return {
+          status: 'ok',
+          user: registeredUser,
+        }
+    } catch (error) {
+        console.error('Error during registration:', error)
+        throw new Error('Registration failed')
       }
     }
   }

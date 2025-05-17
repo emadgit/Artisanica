@@ -17,3 +17,18 @@ export interface User {
     updatedAt: string 
   }
 
+
+export interface RegisterUserInput {
+    email: string
+    password: string
+    firstName?: string
+    lastName?: string
+    phoneNumber?: string
+    address?: string
+    city?: string
+    state?: string
+    country?: string
+    zipCode?: string
+    dateOfBirth?: string
+  }
+  

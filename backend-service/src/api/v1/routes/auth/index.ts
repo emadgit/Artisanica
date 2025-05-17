@@ -13,6 +13,14 @@ const authRoute: FastifyPluginAsync = async (fastify) => {
 
     return reply.send(result)
   })
+
+  fastify.post('/register', async (request, reply) => {
+    const input = request.body as { email: string; password: string }
+
+    const result = await app.auth.register(input)
+
+    return reply.send(result)
+  })
 }
 
 export { authRoute }
