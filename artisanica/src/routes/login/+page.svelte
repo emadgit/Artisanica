@@ -17,7 +17,7 @@
 
 			<a href="/register" class="text-[#3B82F6] hover:underline">Don't have an account? Register</a>
 
-			<button class="rounded bg-[#1F2937] px-4 py-2 text-[#fff]">Sign in</button>
+			<a href="/portal" class="rounded bg-[#1F2937] px-4 py-2 text-[#fff]">Sign in</a>
 		</form>
 	</div>
 </div>
