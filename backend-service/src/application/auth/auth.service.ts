@@ -19,5 +19,14 @@ export interface AuthInput {
         email,
       }
     }
+
+    async register(input: AuthInput): Promise<{ status: string; email: string }> {
+      const { email, password } = input
+
+      return {
+        status: 'ok',
+        email,
+      }
+    }
   }
   

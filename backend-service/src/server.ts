@@ -1,4 +1,4 @@
-import buildApp from './app'
+import buildApp from './api/v1/app'
 
 const start = async () => {
   const app = buildApp()
