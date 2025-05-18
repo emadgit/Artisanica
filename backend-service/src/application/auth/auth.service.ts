@@ -14,7 +14,7 @@ export interface AuthInput {
   
     async login(input: AuthInput): Promise<{ status: string; user: User | null }> {
       const { email, password } = input
-      const user = await this.authRepository.findUserByEmail(input.email)
+      const user = await this.authRepository.findUserByEmail(email)
         if (!user) {
             return {
             status: 'OK',
@@ -22,10 +22,11 @@ export interface AuthInput {
             }
         }
       // Todo: Validate email and password
+        const isPasswordValid = await bcrypt.compare(password, user.password);
 
       return {
-        status: 'OK',
-        user,
+        status: isPasswordValid ? 'OK' : "INVALID_LOGIN",
+        user: isPasswordValid ? user : null,
       }
     }
 
@@ -36,7 +37,7 @@ export interface AuthInput {
         const registeredUser = await this.authRepository.register({ ...input, password: hashed })
   
         return {
-          status: 'ok',
+          status: 'OK',
           user: registeredUser,
         }
     } catch (error) {
