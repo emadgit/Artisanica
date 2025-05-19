@@ -1,9 +1,15 @@
 <script lang="ts">
-	export let form: { message?: string };
+	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
+
+	export let form: { message?: string; success?: boolean };
 	if (form?.message) {
 		setTimeout(() => {
 			form.message = '';
 		}, 3000);
+	}
+	$: if (browser && form?.success) {
+		goto('/portal');
 	}
 </script>
 

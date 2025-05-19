@@ -11,7 +11,7 @@ export const actions = {
 
 		const response:LoginResponse = await ky.post('http://localhost:3000/api/v1/login', {json: {"email": username, "password": password}}).json();
 		if (response.status === "OK" && response.user && response.user.id) {
-			return redirect(303, "/portal")
+			return { success: true };
 		}
 		return fail(400, { message: 'Invalid login' });
 	}
